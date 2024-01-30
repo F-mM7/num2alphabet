@@ -1,18 +1,18 @@
 //create question
 let ans;
-function setQuestion() {
+function set() {
   ans = Math.floor(Math.random() * 26);
   display.innerHTML = ans + 1;
   console.log(String.fromCodePoint("A".codePointAt(0) + ans));
 }
-setQuestion();
+set();
 
-function confirmAnswer(c) {
+function judge(c) {
   return function () {
     display.classList.remove("correct", "incorrect");
     display.offsetWidth;
     if (c.codePointAt(0) - "A".codePointAt(0) == ans) {
-      setQuestion();
+      set();
       display.classList.add("correct");
     } else {
       display.classList.add("incorrect");
@@ -32,7 +32,7 @@ for (let i = 0; i < 3; ++i) {
     let b = document.createElement("button");
     b.id = "Key" + c;
     b.innerHTML = c;
-    b.onclick = confirmAnswer(c);
+    b.onclick = judge(c);
 
     let li = document.createElement("li");
     li.appendChild(b);
@@ -53,6 +53,6 @@ function downKey(e) {
 function upKey(e) {
   if (!e.ctrlKey && e.code.substring(0, 3) == "Key") {
     document.getElementById(e.code).classList.remove("press");
-    confirmAnswer(e.code[3])();
+    judge(e.code[3])();
   }
 }

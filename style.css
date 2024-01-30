@@ -12,7 +12,7 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
+  display: inline;
   width: 10%;
 }
 button {
@@ -42,6 +42,6 @@ button.press {
 }
 @keyframes incorrect {
   0% {
-    background-color: red;
+    background-color: maroon;
   }
 }
